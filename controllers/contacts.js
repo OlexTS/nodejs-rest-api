@@ -7,8 +7,8 @@ const getContacts = async (req, res, next) => {
 };
 
 const getContactById = async (req, res, next) => {
-  const { id } = req.params;
-  const result = await contacts.getById(id);
+  const { contactId } = req.params;
+  const result = await contacts.getById(contactId);
   if (!result) {
     throw HttpError(404, "Not found");
   }
@@ -33,11 +33,11 @@ const updateContact = async (req, res, next) => {
   const { contactId } = req.params;
   const result = await contacts.updateContact(contactId, req.body);
   console.log(result);
-  if (Object.keys(req.body).length === 0 ) {
+  if (Object.keys(req.body).length === 0) {
     throw HttpError(400, "missing fields");
   }
   if (!result) {
-    throw HttpError(404, 'Not found')
+    throw HttpError(404, "Not found");
   }
   res.json(result);
 };
