@@ -3,7 +3,6 @@ const { HttpError, ctrlWrapper } = require("../helpers");
 
 const getContacts = async (req, res, next) => {
   const result = await Contact.find();
-  console.log(result);
   res.json(result);
 };
 
