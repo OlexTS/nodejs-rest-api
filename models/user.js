@@ -30,7 +30,7 @@ const userRegisterSchema = Joi.object({
 })
 
 const userLoginSchema = Joi.object({
-    password: Joi.string().pattern(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/).required(),
+    password: Joi.string().required(),
     email: Joi.string().pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/).required(),
     
 })
