@@ -24,13 +24,13 @@ const userSchema = new Schema({
 userSchema.post("save", mongooseError);
 
 const userRegisterSchema = Joi.object({
-    password: Joi.string().required(),
+    password: Joi.string().pattern(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/).required(),
     email: Joi.string().pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/).required(),
     subscription: Joi.string(),
 })
 
 const userLoginSchema = Joi.object({
-    password: Joi.string().pattern(/(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[$@$!#.])[A-Za-zd$@$!%*?&.]{8,20}/).required(),
+    password: Joi.string().pattern(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/).required(),
     email: Joi.string().pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/).required(),
     
 })
