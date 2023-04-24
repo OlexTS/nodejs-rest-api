@@ -39,6 +39,6 @@ router.patch(
   controller.updateStatusContact
 );
 
-router.get('/')
+router.get("/");
 
 module.exports = router;
