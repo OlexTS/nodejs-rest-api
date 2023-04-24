@@ -13,7 +13,8 @@ router.post(
   controller.register
 );
 router.post("/login", validateBody(schemas.userLoginSchema), controller.login);
-router.post('/logout', authenticate, controller.logout)
-router.get('/current', authenticate, controller.getCurrent)
+router.post("/logout", authenticate, controller.logout);
+router.get("/current", authenticate, controller.getCurrent);
+
 
 module.exports = router;

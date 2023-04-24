@@ -69,6 +69,8 @@ const getCurrent = async (req, res) => {
   res.json({ email, subscription });
 };
 
+
+
 module.exports = {
   register: ctrlWrapper(register),
   login: ctrlWrapper(login),
