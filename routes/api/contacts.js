@@ -6,20 +6,27 @@ const {
   validateBody,
   postValidateBody,
   isValidId,
+  authenticate,
 } = require("../../middlewares");
 
 const router = express.Router();
 
-router.get("/", controller.getContacts);
+router.get("/", authenticate, controller.getContacts);
 
-router.get("/:contactId", isValidId, controller.getContactById);
+router.get("/:contactId", authenticate, isValidId, controller.getContactById);
 
-router.post("/", postValidateBody(schemas.addSchema), controller.addNewContact);
+router.post(
+  "/",
+  authenticate,
+  postValidateBody(schemas.addSchema),
+  controller.addNewContact
+);
 
-router.delete("/:contactId", isValidId, controller.deleteContact);
+router.delete("/:contactId", authenticate, isValidId, controller.deleteContact);
 
 router.put(
   "/:contactId",
+  authenticate,
   isValidId,
   validateBody(schemas.changeSchema),
   controller.updateContact
@@ -31,5 +38,7 @@ router.patch(
   validateBody(schemas.updateFavoriteSchema),
   controller.updateStatusContact
 );
+
+router.get("/");
 
 module.exports = router;
